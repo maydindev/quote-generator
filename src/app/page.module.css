@@ -228,3 +228,35 @@
     transform: rotate(0deg);
   }
 }
+
+/*My Styles*/
+.titleQuote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 6rem;
+  margin: 10px;
+  border-radius: 20px;
+  background-color:darkgoldenrod
+}
+
+.cardQuote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: fit-content;
+  margin: 10px;
+  background-color: white
+}
+
+.textQuote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: fit-content;
+  padding: 20px;
+  border: 1px solid black;
+}

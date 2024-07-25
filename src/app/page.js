@@ -1,8 +1,57 @@
+"use client";
 import Image from "next/image";
 import styles from "./page.module.css";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [quote, setQuote] = useState([]);
+  const [text, setText] = useState("");
+  const [author, setAuthor] = useState("");
+
+  const getQuote = async () => {
+    try {
+      const response = await fetch("https://type.fit/api/quotes");
+      const data = await response.json();
+      console.log(data);
+      setQuote(data);
+      const random = Math.floor(Math.random() * quote.length);
+      setText(data[random].text);
+      setAuthor(data[random].author);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getQuote();
+  },[])
+
+  const handleNewQuote = () => {
+    const random = Math.floor(Math.random() * quote.length);
+    console.log(random);
+    setText(quote[random].text);
+    setAuthor(quote[random].author);
+  };
+
+  //<div /*className={styles.container}*/>
+  //<div /*className={styles.quote}*/>titleQuote textQuote
   return (
+    <>
+      <div className={styles.titleQuote}>
+        <h1>Project 3: Quote Generator</h1>
+        <div>
+          <div className={styles.cardQuote}>
+            <div className={styles.textQuote}>
+              <button onClick={handleNewQuote}>New Quote</button>
+              <p><strong>{text}</strong></p>
+              <p><em>{author}</em>-</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+
+    /*
     <main className={styles.main}>
       <div className={styles.description}>
         <p>
@@ -91,5 +140,6 @@ export default function Home() {
         </a>
       </div>
     </main>
+    */
   );
 }
