@@ -15,13 +15,14 @@ export default function Home() {
       console.log(data);
       setQuote(data);
       const random = Math.floor(Math.random() * quote.length);
-      setText(data[random].text);
-      setAuthor(data[random].author);
+      setText(data[random]?.text);
+      setAuthor(data[random]?.author);
     } catch (err) {
       console.log(err);
     }
   };
 
+  
   useEffect(() => {
     getQuote();
   },[])
